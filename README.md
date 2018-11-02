@@ -1,2 +1,2 @@
 # HomeSeerScripts
-VB scripts for Homeseer
+VB scripts for HomeSeer
