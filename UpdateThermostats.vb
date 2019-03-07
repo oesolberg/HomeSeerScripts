@@ -13,7 +13,8 @@ End Sub
 Private Sub UpdateTemperatureDevice(ByVal temperature as Integer, ByVal deviceRef As Integer)
     Dim s As New ThermostatSettings(hs, deviceRef)
     'Dim roomTemperature As Double = Math.Round((hs.DeviceValueEx(s.ExternalTemperatureSensorRef) + s.TemperatureCorrectionAddition) * s.TemperatureCorrectionMultiplier, 1)
-﻿
+
+
     hs.SetDeviceValueByRef(GetChildReference(rootDeviceRef, ThermostatDeviceType.Thermostat_Temperature), temperature, True)
 End Sub
 
