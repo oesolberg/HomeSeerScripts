@@ -57,7 +57,12 @@ public void UpdateHomeSeerDevices(System.Collections.Generic.List<string> format
 {
 		SetHsDevice(RotationMeterDevice,formattedData[RotationIndex]);
 		SetHsDevice(ProbabilityDevice,formattedData[ProbabillityIndex]);
-		SetHsDevice(FileDateDevice,formattedData[FileDateIndex]);
+ 		var fileDateHsDeviceValue=hs.DeviceString(FileDateDevice);
+		LogToHomeseer("filedate: " + fileDateHsDeviceValue);
+		if(!fileDateHsDeviceValue.Equals(formattedData[FileDateIndex]))
+		{
+    			SetHsDevice(FileDateDevice,formattedData[FileDateIndex]);
+  		}
 		
 }
 
