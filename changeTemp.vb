@@ -1,4 +1,6 @@
-﻿Sub Main (ByVal inputArgs as string)
+﻿'This script is used to fetch a common temperature in first ref in inputArgs. 
+'And that is set to all the rest of the refs in the inputArgs
+Sub Main (ByVal inputArgs as string)
 	'Change temperature by script
 	If inputArgs.Length = 0 Then
 		hs.WriteLog("test","No input value found. Exiting script")

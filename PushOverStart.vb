@@ -43,9 +43,9 @@ Private Sub UpdateNumberOfDaysWithoutFrost(ByVal deviceRefDaysWithoutFrost As In
 	If foundFrost=False Then
 		Dim numberOfDaysWithoutFrost as double = hs.DeviceValueEx(deviceRefDaysWithoutFrost)
 		numberOfDaysWithoutFrost=numberOfDaysWithoutFrost+1
-		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, numberOfDaysWithoutFrost , True)
+		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, numberOfDaysWithoutFrost , False)
 	Else
-		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, 0 , True)
+		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, 0 , False)
 	End If
 	
 	' Dim currentTemp as double=hs.DeviceValueEx(deviceRef)
