@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -57,29 +57,33 @@ public void UpdateHomeSeerDevices(System.Collections.Generic.List<string> format
 {
 		SetHsDevice(RotationMeterDevice,formattedData[RotationIndex]);
 		SetHsDevice(ProbabilityDevice,formattedData[ProbabillityIndex]);
-		SetHsDevice(FileDateDevice,formattedData[FileDateIndex]);
-		
+ 		var fileDateHsDeviceValue=hs.DeviceString(FileDateDevice);
+		LogToHomeseer("filedate: " + fileDateHsDeviceValue);
+		if(!fileDateHsDeviceValue.Equals(formattedData[FileDateIndex]))
+		{
+    			SetHsDevice(FileDateDevice,formattedData[FileDateIndex]);
+  		}		
 }
 
 public void SetHsDevice(int deviceNumber, string valueToUpdateTo)
 {
 	
 	hs.SetDeviceString(deviceNumber,valueToUpdateTo,true);
-	if(deviceNumber==RotationMeterDevice)
+	if(deviceNumber==RotationMeterDevice || deviceNumber==ProbabilityDevice)
 	{
 
-		var intValue=ConvertStringToInt(valueToUpdateTo);
-
-		hs.SetDeviceValueByRef(deviceNumber,intValue,true);	
+		var value=ConvertStringToDouble(valueToUpdateTo);
+		LogToHomeseer("Changing device: " + deviceNumber + " with value " +value);
+		hs.SetDeviceValueByRef(deviceNumber,value,true);	
 	}		
 }
 
-public int ConvertStringToInt(string intValueAsString)
+public double ConvertStringToDouble(string valueAsString)
 {
-	int returnValue=-99;
-	 if(int.TryParse(intValueAsString,out returnValue))
+	double returnValue=-99;
+	 if(double.TryParse(valueAsString,out returnValue))
 	 {
-		 LogToHomeseer("Conversion from string to int worked");
+		 LogToHomeseer("Conversion from string to double worked");
 	 }
 	return returnValue;
 }
