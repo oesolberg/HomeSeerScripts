@@ -1,4 +1,4 @@
-Dim  logName as string="Guahtdim_SetMinMaxTemp"
+﻿Dim  logName as string="Guahtdim_SetMinMaxTemp"
 '0=temp to be read
 '1=Min value
 '2=Max value
@@ -43,5 +43,3 @@ Private Sub UpdateTempForMaximumValue(ByVal foundTemperature as double, ByVal de
 		hs.SetDeviceValueByRef(deviceRef, foundTemperature , True)
 	End If
 End Sub
-
-

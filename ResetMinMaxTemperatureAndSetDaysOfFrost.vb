@@ -1,4 +1,4 @@
-dim highestTempStart as double  = -99
+﻿dim highestTempStart as double  = -99
 dim lowestTempStart as double   = 99
 dim  logName as string="Guahtdim_ResetMinMaxTempAndSetDaysOfFrost"
 '0=numberOfDaysWithoutFrost
@@ -35,32 +35,31 @@ End Sub
 Private Sub UpdateNumberOfDaysWithoutFrost(ByVal deviceRefDaysWithoutFrost As Integer,ByVal deviceRefMinTemp1 As Integer,ByVal deviceRefMinTemp2 As Integer)
     Dim foundFrost as boolean=False
 	Dim foundTemp1 as double=hs.DeviceValueEx(deviceRefMinTemp1)
+hs.WriteLog("Update days of frost","temp1:"+  CStr(foundTemp1))
 	Dim foundTemp2 as double=hs.DeviceValueEx(deviceRefMinTemp2)
+hs.WriteLog("Update days of frost","temp2:"+  CStr(foundTemp1))
 	If foundTemp1<=0 Or foundTemp2<=0 Then
 		foundFrost=True
 	End If
 		
 	If foundFrost=False Then
 		Dim numberOfDaysWithoutFrost as double = hs.DeviceValueEx(deviceRefDaysWithoutFrost)
+hs.WriteLog("Update days of frost","current days without frost:" + CStr(numberOfDaysWithoutFrost))
 		numberOfDaysWithoutFrost=numberOfDaysWithoutFrost+1
+hs.WriteLog("Update days of frost","New number of days without frost:" + CStr(numberOfDaysWithoutFrost))
 		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, numberOfDaysWithoutFrost , True)
 	Else
+hs.WriteLog("Update days of frost","resetting days to zero")
 		hs.SetDeviceValueByRef(deviceRefDaysWithoutFrost, 0 , True)
 	End If
 	
-	' Dim currentTemp as double=hs.DeviceValueEx(deviceRef)
-	' If currentTemp<foundTemperature Then
-		' 'Update temperature since it is lower
-		' hs.SetDeviceValueByRef(deviceRef, foundTemperature , True)
-	' End If
+
 End Sub
 
 
 Private Sub ResetMinMaxValues(ByVal deviceRefMinValue As Integer,ByVal deviceRefMaxValue As Integer)
     
-	hs.SetDeviceValueByRef(deviceRefMinValue, lowestTempStart , False)
-	hs.SetDeviceValueByRef(deviceRefMaxValue, highestTempStart , False)
+	hs.SetDeviceValueByRef(deviceRefMinValue, lowestTempStart , True)
+	hs.SetDeviceValueByRef(deviceRefMaxValue, highestTempStart , True)
 	
 End Sub
-
-

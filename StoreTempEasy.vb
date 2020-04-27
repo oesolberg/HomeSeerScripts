@@ -1,5 +1,5 @@
 	dim  logName as string="Guahtdim_StoreAndGetDeviceValueFromIniScript"
-	dim deviceRef as Integer=19
+	dim deviceRef as Integer=412
 	dim filename as string="DeviceState_defaultTemp.ini"
 	Sub Main(ByVal inputArgs as string)
 		'Get value
