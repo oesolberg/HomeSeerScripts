@@ -32,9 +32,15 @@ Sub Main(ByVal parameters As Object)
 		If InStr(source,"<span class=""hidden-xs"">Utsolgt fra leverandør</span>")>0 Then
 			hs.SetDeviceString(deviceRef, "Olden eple utsolgt" , True)
 			hs.SetDeviceValueByRef(deviceRef, 0, True)
+                        hs.WriteLog(_logName, "Ikke noe olden denne gangen")
+		Else If InStr(source,"<span class=""hidden-xs"">Utsolgt</span>")>0 Then
+			hs.SetDeviceString(deviceRef, "Olden eple utsolgt" , True)
+			hs.SetDeviceValueByRef(deviceRef, 0, True)
+                        hs.WriteLog(_logName, "Ikke noe olden denne gangen")
 		Else
 			hs.SetDeviceString(deviceRef, "Olden eple lager" , True)
 			hs.SetDeviceValueByRef(deviceRef, 100, True)
+                        hs.WriteLog(_logName, "Olden Eple!!!!")
 		End If		
 	
 	Catch ex As Exception

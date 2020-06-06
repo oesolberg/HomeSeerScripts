@@ -1,0 +1,18 @@
+Nytt image for HS3
+IEUser/Passw0rd!
+
+Firewall->advanced settings->Inbound rules->tcp port 10400
+
+Download chrome
+
+Change picture of user -> download from internet. Settings->Accounts->Account info->Browse for picture
+
+Change user name to HomeSeer
+Control panel->User Accounts->Change account type->Change account name -> HomeSeer
+
+Change user password
+Settings->Accounts->Sign-in options->Change password
+
+Adjust date/time->utc+1 copenhagen
+
+Add registration to HS3 (mail from HS Friday 2019-06-07 20:29)

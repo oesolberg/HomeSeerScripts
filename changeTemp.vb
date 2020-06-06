@@ -1,6 +1,7 @@
 ﻿Sub Main (ByVal inputArgs as string)
 'Originally devices 412,74,261,236,228,522
 '412=device med satt temperatur(Heating temperature living rooms),74=stue sør,261=stue vest,236=spisestue,228=kjøkken,522=Varmepumpe spisestue
+'2020-05-06 spisestue og stue sør fjernet da de ikke skal endres pga planter som blir stekt
 	'Change temperature by script
 	If inputArgs.Length = 0 Then
 		hs.WriteLog("ChangeTemp","No input value found. Exiting script")
